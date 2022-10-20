@@ -2,18 +2,18 @@ package service
 
 import (
 	"go.uber.org/zap"
-	"httpsd-service/internal/db/metrics"
+	"httpsd-service/internal/db/targets"
 )
 
 type Manager struct {
-	storage metrics.Implementation
+	storage targets.Implementation
 
 	whiteList []int64
 
 	logger *zap.Logger
 }
 
-func NewManager(logger *zap.Logger, storage metrics.Implementation, whiteList []int64) *Manager {
+func NewManager(logger *zap.Logger, storage targets.Implementation, whiteList []int64) *Manager {
 	return &Manager{
 		storage:   storage,
 		whiteList: whiteList,

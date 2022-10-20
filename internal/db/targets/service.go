@@ -1,4 +1,4 @@
-package metrics
+package targets
 
 import (
 	"context"
@@ -7,10 +7,10 @@ import (
 )
 
 type Implementation interface {
-	AddTargetInDb(ctx context.Context, target *entity.TargetDbDTO) error
+	AddTargetInDb(ctx context.Context, target *entity.TargetDb) error
 	DeleteTargetFromDb(ctx context.Context, nameTarget string) error
 
-	GetTargetForPrometheus(ctx context.Context, nameTarget string) (*entity.TargetPrometheus, error)
+	GetTargetForPrometheus(ctx context.Context) ([]*entity.TargetPrometheus, error)
 }
 
 type Storage struct {

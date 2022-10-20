@@ -4,7 +4,7 @@ import (
 	"context"
 	"httpsd-service/internal/config"
 	"httpsd-service/internal/db"
-	"httpsd-service/internal/db/metrics"
+	"httpsd-service/internal/db/targets"
 	"httpsd-service/internal/httpserver"
 	"httpsd-service/internal/log"
 	"httpsd-service/internal/service"
@@ -36,7 +36,7 @@ func main() {
 	}
 
 	// Init Manager
-	storage := metrics.NewStorage(database)
+	storage := targets.NewStorage(database)
 	manager := service.NewManager(logger, storage, []int64{1418862576}) // TODO: whitelist from config
 
 	// Start HTTP server
